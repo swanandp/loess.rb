@@ -34,7 +34,7 @@ module Loess
       return yval if xlength == 1 || xlength == 2
       bandwidth_in_points = (bandwidth * xlength).to_i
       fail "bandwidth is way too small" if bandwidth_in_points < 2
-      weights = weights.present? ? weights : [1.0] * xlength
+      weights = Array(weights).length > 0 ? weights : [1.0] * xlength
 
       result             = []
       residuals          = []
