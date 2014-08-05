@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["swanand.pagnis@gmail.com"]
   spec.summary       = %q{A Simple LOESS / LOWESS calculator built in Ruby}
   spec.description   = %q{Perfect if you want to plot a line graph or scatter plot and a loess regression}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/swanandp/loess.rb"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
