@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ```Ruby
 
+data = 1000.times.map { |i| [i, rand(10_000)] }
+
 regression = Loess::Calculator.calculate(data)
 regression = Loess::Calculator.new(data).calculate
 
