@@ -1,6 +1,6 @@
 # Loess
 
-Simple Loess / Lowess interpolator built in Ruby, based on Apache's [`LoessInterpolator`][1].
+Simple Loess / Lowess interpolator built in Ruby, using Apache's [`LoessInterpolator`][1] through Rjb
 
 ## Installation
 
@@ -16,30 +16,40 @@ Or install it yourself as:
 
     $ gem install loess
 
+## Depencies
+
+This gem depends on Rjb, which in turn depends on Java. [Rjb documentation][3] has more info.
+
 ## Usage
 
 ```Ruby
 
 data = 1000.times.map { |i| [i, rand(10_000)] }
 
-regression = Loess::Calculator.calculate(data)
-regression = Loess::Calculator.new(data).calculate
+regression = Loess::Interpolator.interpolate(data)
+regression = Loess::Interpolator.new(data).interpolate
 
 # Change your settings
 
-calculator = Loess::Calculator.new(data)
-calculator.bandwidth = 0.2
-calculator.robustness_factor = 10 # Go crazy
-calculator.calculate
+interpolator = Loess::Interpolator.new(data)
+interpolator.bandwidth = 0.2
+interpolator.robustness_factor = 10 # Go crazy
+interpolator.interpolate
 
 # Pass in settings through initialize
-calculator = Loess::Calculator.new(data, bandwidth: 0.2, accuracy: 1e-10)
-calculator.calculate
+interpolator = Loess::Interpolator.new(data, bandwidth: 0.2, accuracy: 1e-10)
+interpolator.interpolate
 
+# Get a Spline Interpolator object
+# Returns an instance of PolynomialSplineFunction, smoothed with the given data
+# More documentation at [Apache Commons Maths][2]
+interpolator.spline_interpolator
 
 ```
 
 ## Contributing
+
+At this moment, there is little to contribute, but still:  
 
 1. Fork it ( https://github.com/swanandp/loess.rb/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -49,3 +59,5 @@ calculator.calculate
 
 
 [1]: http://commons.apache.org/proper/commons-math/jacoco/org.apache.commons.math3.analysis.interpolation/LoessInterpolator.java.html
+[2]: http://commons.apache.org/proper/commons-math/jacoco/org.apache.commons.math3.analysis.polynomials/PolynomialSplineFunction.java.html
+[3]: https://github.com/arton/rjb
