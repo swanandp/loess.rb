@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Loess::VERSION
   spec.authors       = ["Swanand Pagnis"]
   spec.email         = ["swanand.pagnis@gmail.com"]
-  spec.summary       = %q{A Simple LOESS / LOWESS calculator built in Ruby}
+  spec.summary       = %q{A Simple LOESS / LOWESS calculator built in Ruby, using Apache Commons Math through Rjb}
   spec.description   = %q{Perfect if you want to plot a line graph or scatter plot and a loess regression}
   spec.homepage      = "https://github.com/swanandp/loess.rb"
   spec.license       = "MIT"
